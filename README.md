@@ -37,7 +37,7 @@ pages. It also makes the search bar function to filter out books. <br/>
 browser's local storage. It retrieves saved data when the user revisits the page, displaying profile
 details like name, profile picture, and favorite books. <br/>
 **About Us**: JavaScript is used for the menu button in the about us page. The page displays information about 
-the website and its creators.
+the website. Which include details about the website's purpose, the inspiration behind its creation, and the developers involved.
 
 
 
