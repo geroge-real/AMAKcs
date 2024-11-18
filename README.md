@@ -18,8 +18,8 @@ create posts to share with others.
 **Javascript Description**: 
 This project is a book information website designed to showcase 
 popular books and allow users to search for and save their favorite books. The website uses 
-Javascript to enhance its functionality.  The main functions implementing Javascript are, 
-making the search bar work to filter out books that dont have the keywords the user typed, 
+Javascript to enhance its functionality. The main functions implementing Javascript are
+making the search bar work to filter out books that don't have the keywords the user typed, 
 a collapsible menu, and profile section where users can edit and save (even when reloaded!).
 
 This website is a book library website where people can search for books, rate, read, and leave 
@@ -29,7 +29,7 @@ The menu button triggers navigation to different pages based on user input, allo
 book data and social media content. The javascript code manages the search bar functionality, menu, 
 and profile data storage.
 
-**Webpage Descriptions** <br/>
+**Webpage Descriptions:** <br/>
 **Homepage**: The JavaScript code manages the functionality of the menu button, allowing users to toggle 
 between sections. The script listens for clicks on the buttons to navigate to the Profile, and About Us
 pages. It also makes the search bar function to filter out books. <br/>
