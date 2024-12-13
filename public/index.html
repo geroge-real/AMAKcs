@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aklatan Ko: Aklatan Mo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/AKAM_Book_Logo-removebg-preview.png?v=1729391476844" type="image/png" >
+</head>
+<body>
+
+   <header>
+  <h1>Aklatan Mo: Aklatan Ko</h1>
+  <div class="menu">
+    <button class="menu-button">
+      <img src="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/588a6507d06f6719692a2d15.png?v=1729390272085" alt="Menu" class="menu-icon">
+    </button>
+    <div class="menu-content">
+      <a href="index.html">Home</a>
+      <a href="mainprofile.html">Profile</a>
+      <a href="aboutus.html">About Us</a>
+    </div>
+  </div>
+</header>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for books..." onkeyup="searchBooks()">
+    </div>
+
+    <main>
+        <h2>Top Rated Books 2024</h2>
+        <div class="top-books" id="bookList">
+            <div class="book" data-title="Pride and Prejudice" data-author="Jane Austen">
+                <img src="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/Pride_and_Prejudice-removebg-preview.png?v=1729391805041" alt="Book Cover">
+                <h3>Pride and Prejudice</h3>
+                <p>Author: Jane Austen</p>
+                <p>Genre: Regency Romance</p>
+            </div>
+            <div class="book" data-title="1984" data-author="George Orwell">
+                <img src="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/1984%20Book.jpg?v=1729391922228" alt="Book Cover">
+                <h3>1984</h3>
+                <p>Author: George Orwell</p>
+                <p>Genre: Science Dystopian</p>
+            </div>
+            <div class="book" data-title="The Scarlet Letter" data-author="Nathaniel Hawthorne">
+                <img src="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/The%20Scarlet%20Letter%20CS%20Book.png?v=1729396120611" alt="Book Cover">
+                <h3>The Scarlet Letter</h3>
+                <p>Author: Nathaniel Hawthorne</p>
+                <p>Genre: Dark Romanticism </p>
+            </div>
+            <div class="book" data-title="To Kill A Mockingbird" data-author="Harper Lee">
+                <img src="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/Kill%20a%20Mocking%20Bird%20Book.jpg?v=1729568601879" alt="Book Cover">
+                <h3>To Kill a Mockingbird</h3>
+                <p>Author: Harper Lee</p>
+                <p>Genre: Southern Gothic </p>
+            </div>
+            <div class="book" data-title="The Catcher in the Rye" data-author="Jerome Salinger">
+                <img src="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/The%20Catcher%20in%20the%20Rye.jpg?v=1729576497695" alt="Book Cover">
+                <h3>The Catcher in the Rye</h3>
+                <p>Author: Jerome Salinger</p>
+                <p>Genre: Coming-of-Age </p>
+            </div>
+        </div>
+      <h2>Reader's Choice AKAM 2024</h2>
+        <div class="top-books" id="bookList">
+            <div class="book" data-title="Pride and Prejudice" data-author="Jane Austen">
+                <img src="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/Pride_and_Prejudice-removebg-preview.png?v=1729391805041" alt="Book Cover">
+                <h3>Pride and Prejudice</h3>
+                <p>Author: Jane Austen</p>
+                <p>Genre: Regency Romance</p>
+            </div>
+            <div class="book" data-title="1984" data-author="George Orwell">
+                <img src="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/1984%20Book.jpg?v=1729391922228" alt="Book Cover">
+                <h3>1984</h3>
+                <p>Author: George Orwell</p>
+                <p>Genre: Science Dystopian</p>
+            </div>
+            <div class="book" data-title="The Scarlet Letter" data-author="Nathaniel Hawthorne">
+                <img src="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/The%20Scarlet%20Letter%20CS%20Book.png?v=1729396120611" alt="Book Cover">
+                <h3>The Scarlet Letter</h3>
+                <p>Author: Nathaniel Hawthorne</p>
+                <p>Genre: Dark Romanticism </p>
+            </div>
+            <div class="book" data-title="To Kill A Mockingbird" data-author="Harper Lee">
+                <img src="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/Kill%20a%20Mocking%20Bird%20Book.jpg?v=1729568601879" alt="Book Cover">
+                <h3>To Kill a Mockingbird</h3>
+                <p>Author: Harper Lee</p>
+                <p>Genre: Southern Gothic </p>
+            </div>
+            <div class="book" data-title="The Catcher in the Rye" data-author="Jerome Salinger">
+                <img src="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/The%20Catcher%20in%20the%20Rye.jpg?v=1729576497695" alt="Book Cover">
+                <h3>The Catcher in the Rye</h3>
+                <p>Author: Jerome Salinger</p>
+                <p>Genre: Coming-of-Age </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AMAK </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
