@@ -52,27 +52,13 @@ header h1 {
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.profile-button {
-    position: absolute;
-    right: 20px;
-    top: 25px;
-    background-color: #8b9eb7;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
-.profile-button:active {
-    background-color: #ff5252;
-}
-
+/* main formating*/
 main {
     padding: 40px 20px;
     text-align: center;
 }
-
+/* book formating */
 .top-books {
     display: flex;
     justify-content: center;
@@ -99,7 +85,7 @@ main {
     height: auto;
     border-radius: 4px;
 }
-
+/*footer formatting*/
 footer {
     text-align: center;
     padding: 5px;
@@ -109,6 +95,7 @@ footer {
     bottom: 0;
     width: 100%;
 }
+/*menu button formatting*/
 .menu {
   position: absolute; 
   top: 20px;         
@@ -151,6 +138,7 @@ footer {
 .show {
   display: block; 
 }
+/* div formating */
 div {
   right:10px;
 }
