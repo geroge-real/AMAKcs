@@ -142,3 +142,34 @@ footer {
 div {
   right:10px;
 }
+/* about us  formating */
+/* Main content container */
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: left;
+}
+
+/* Text content styling */
+.text-content {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+/* Image container styling */
+.image-container {
+    flex: 1;
+    min-width: 250px;
+    max-width: 400px;
+}
+
+.about-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
