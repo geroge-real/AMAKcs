@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f9;
-    color: #333;
+    color: #333333;
 }
 /*header formating*/
 header {
@@ -22,11 +22,8 @@ header h1 {
     margin: 0;
     font-size: 2.5em;
     text-shadow: 3px 3px 3px #6f7ab2;
-    display: inline-block; 
-    vertical-align: middle; 
-    margin: 0;
 }
-}
+
 /*search bar formatting*/
 .search-bar {
     display: flex;
@@ -286,16 +283,12 @@ figcaption {
     font-style: italic;
 }
 /*icon formating*/
-=
-.header-container {
-    display: inline-block; /* Aligns the logo inline with text */
-    vertical-align: middle; /* Ensures alignment with the header text */
-}
-
-/* Logo image */
 .header-logo {
-    width: 50px; /* Adjust logo size */
+    width: 80px; /* Adjust the size of the logo */
     height: auto; /* Maintain aspect ratio */
-    margin-right: 15px; /* Add spacing between the logo and text */
+    position: absolute; 
+    top: 5px;         
+    left: 10px;        
+    display: inline-block;
 }
 
