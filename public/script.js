@@ -17,20 +17,15 @@ function searchBooks() {
 
 //menu button code
 
-document.querySelector('.menu-button').addEventListener('click', function() {
-  const menuContent = document.querySelector('.menu-content');
+// Select the menu button and menu content
+const menuButton = document.querySelector('.menu-button');
+const menuContent = document.querySelector('.menu-content');
+
+// Add a click event listener to toggle the 'show' class
+menuButton.addEventListener('click', () => {
   menuContent.classList.toggle('show');
 });
 
-window.addEventListener('click', function(event) {
-  // Close the dropdown if the user clicks outside the menu
-  if (!event.target.closest('.menu')) {
-    const menuContent = document.querySelector('.menu-content');
-    if (menuContent.classList.contains('show')) {
-      menuContent.classList.remove('show');
-    }
-  }
-});
 
 
 
