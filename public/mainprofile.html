@@ -7,71 +7,88 @@
     <title>Profile</title>
     <meta name="keywords" content="AMAK, account, user, friends, public, comments, activity, biography, picture" />
     <meta name="author" content="Rey Adriano, George Froyalde">
-    <meta name="description" content="One of the webpages of AMAK that allows users to change
-                                      their profile picture and public biography on their personal 
-                                      accounts, find and accept new friends, post and see their images 
-                                      and videos. It also allow them to see their recent activity, 
-                                      such as their comments and written works." />
+    <meta name="description" content="One of the webpages of AMAK that allows users to change their profile picture and public biography on their personal accounts, find and accept new friends, post and see their images and videos. It also allows them to see their recent activity, such as their comments and written works." />
     <meta name="revised" content="December 11, 2024">
     <link rel="stylesheet" href="style.css">
-  
 </head>
 <body>
   <!--header and menu-->
-    <header>
-
-        <h1>User Profile</h1>
-        <header>
-        <div class="menu">
-        <button class="menu-button">
-            <img src="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/588a6507d06f6719692a2d15.png?v=1729390272085" alt="Menu" class="menu-icon">
-        </button>
-        <div class="menu-content">
+  <header>
+    <h1>User Profile</h1>
+    <div class="menu">
+      <button class="menu-button">
+        <img src="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/588a6507d06f6719692a2d15.png?v=1729390272085" alt="Menu" class="menu-icon">
+      </button>
+      <div class="menu-content">
         <a href="index.html">Home</a>
         <a href="mainprofile.html">Profile</a>
         <a href="profile.html">Edit Profile</a>
         <a href="aboutus.html">About Us</a>
-    </div>
-
-  </div>
-
-</header>
-
-    </header>
-<!-- content and search-->
-    <main>
-                 <h2>Welcome, Reader!</h2>   <div class="search-friends">
-        <input type="" id="" placeholder="Search for friends..." onkeyup="searchBooks()">
       </div>
-    </main>
-  
-  <p>
-    Pressing the corner leads to the User Profile Webpage, which provides visitors with an intuitive interface and allows them to 
-    manage their public information. The page features a profile overview that displays a user’s profile picture, real name, username, 
-    biography. It also shows icons for their other social media accounts, such as Facebook, Goodreads, Instagram, AO3, and Twitter, 
-    and the ability to search and find other AMAK users. 
-  </p>
+    </div>
+  </header>
 
-  <p>
-    In addition to allowing users to share their profiles at the click of a button, this webpage lets them view their uploaded content and post images 
-    and videos directly. It also shows them the people they’re friends with and following and their engagement metrics, such as comments on other posts, 
-    novels, and written works. All these elements help this webpage become engaging and easy to use, allowing visitors to upload content and connect with 
-    their community.
-  </p>
+  <!-- Main content -->
+  <main>
+    <section class="profile-overview">
+      <div class="profile-header">
+        <div class="profile-picture"></div>
+        <div class="profile-info">
+          <h2>Welcome, Pisay Dela Cruz!</h2>
+          <p>Hi, I'm Pisay! Lorem ipsum dolor sit amet...</p>
+          <p><strong>Username:</strong> pisaybooklover123</p>
+        </div>
+      </div>
+      <div class="profile-actions">
+        <button>Upload</button>
+        <button>Posts</button>
+        <button>Images</button>
+        <button>Videos</button>
+        <button>Reels</button>
+      </div>
+    </section>
 
+    <section class="profile-content">
+      <div class="content-grid">
+        <div class="content-item">Image 1</div>
+        <div class="content-item">Image 2</div>
+        <div class="content-item">Image 3</div>
+      </div>
+    </section>
 
-  
- 
-  <button onclick="saveProfile()">Add Friends (doesnt work yet)</button>
-  <!-- footer -->
-    <footer>
+    <section class="friends-section">
+      <h3>Follows and Friends with</h3>
+      <div class="friends-grid">
+        <div class="friend">Friend 1</div>
+        <div class="friend">Friend 2</div>
+        <div class="friend">Friend 3</div>
+        <div class="friend">Friend 4</div>
+        <div class="friend">Friend 5</div>
+      </div>
+    </section>
 
-        <p>&copy; 2024 AMAK</p>
+    <section class="activity-section">
+      <h3>Your Written Works and Activity</h3>
+      <div class="activity-grid">
+        <div class="activity-item">
+          <h4>Title</h4>
+          <p>Written on: Date</p>
+          <p>Description...</p>
+        </div>
+        <div class="activity-item">
+          <h4>Comments</h4>
+          <p>Written on: Date</p>
+          <p>Description...</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    </footer>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 AMAK</p>
+  </footer>
 
-   <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
-
 </html>
