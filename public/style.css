@@ -143,37 +143,7 @@ footer {
 div {
   right:10px;
 }
-/* about us  formating */
-/* main content container */
-.content-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 20px;
-    text-align: left;
-}
 
-/* text content formatting */
-.text-content {
-    flex: 1;
-    min-width: 300px;
-    max-width: 600px;
-}
-
-/* image container formating */
-.image-container {
-    flex: 1;
-    min-width: 200px;
-    max-width: 350px;
-}
-
-.about-image {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 /* introduction section formating */
 
 .introduction {
@@ -195,3 +165,112 @@ div {
     margin: 10px 0;
     color: #555555;
 }
+/* profile overview Section */
+.profile-overview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #eaeaea;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.profile-overview img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-overview h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.profile-overview p {
+    font-size: 1em;
+    color: #555555;
+    text-align: center;
+}
+
+/* upload and post buttons */
+.profile-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.profile-buttons button {
+    background-color: #192A51;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.profile-buttons button:hover {
+    background-color: #6f7ab2;
+}
+/*about us formating*/
+/* content container for the About Us page */
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: left;
+    margin: 20px auto;
+}
+
+/* text content styling */
+.text-content {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/*image container styling */
+.image-container {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/*image and caption styling */
+figure {
+    margin: 0;
+    text-align: center;
+}
+
+.about-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.about-image:hover {
+    transform: scale(1.05);
+}
+
+figcaption {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555555;
+    font-style: italic;
+}
+
