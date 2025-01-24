@@ -67,11 +67,7 @@ main {
     justify-content: center;
     flex-wrap: wrap;
 }
-.top-bookss {
-    display: flex;
-    justify-content: left;
-    flex-wrap: wrap;
-}
+
 
 .book {
     background-color: white;
@@ -337,3 +333,64 @@ figcaption {
     display: inline-block;
 }
 
+/*books.html format*/
+/* Styling for book details */
+.book-details {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Image container within book details */
+.book-details img {
+    width: 120px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Book text details */
+.book-details .text-content {
+    flex: 1;
+}
+
+.book-details h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #192A51;
+}
+
+.book-details h3 {
+    margin: 5px 0;
+    font-size: 1.2em;
+    color: #555555;
+}
+
+.book-details p {
+    font-size: 1em;
+    color: #333333;
+    line-height: 1.5;
+    margin: 10px 0 0;
+}
+
+/* Star rating system */
+.star-rating {
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.star-rating .star {
+    font-size: 1.5em;
+    color: #ffcc00;
+    cursor: pointer;
+}
+
+.star-rating .star.gray {
+    color: #cccccc;
+}
