@@ -24,6 +24,7 @@ header h1 {
     text-shadow: 3px 3px 3px #6f7ab2;
 }
 
+
 /*search bar formatting*/
 .search-bar {
     display: flex;
@@ -254,7 +255,7 @@ div {
     min-width: 300px;
     max-width: 600px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 20px;
 }
 
@@ -270,6 +271,35 @@ figure {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
+}
+
+#slider {
+  overflow: hidden;
+}
+
+#slider figure {
+  position: relative;
+  width: 500%;
+  margin: 0; 
+  left: 0; 
+  animation: 20s slider infinite;
+}
+
+#slider figure img {
+  float: left;
+  width: 20%
+}
+
+@keyframes slider {
+  0% {
+    left: 0;
+  }
+  20% {
+    left: 0;
+  }
+  25% {
+    left: -100%
+  }
 }
 
 .about-image:hover {
