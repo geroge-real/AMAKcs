@@ -253,11 +253,15 @@ div {
 /*image container styling */
 .image-container {
     flex: 1;
-    min-width: 300px;
-    max-width: 600px;
+    width: 300px;
+    width: 600px;
     display: flex;
     flex-direction: row;
     gap: 20px;
+    position: fixed;
+    right: 7.5%;
+    bottom: 25%;
+    
 }
 
 /*image and caption styling */
