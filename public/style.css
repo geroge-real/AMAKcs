@@ -253,14 +253,12 @@ div {
 /*image container styling */
 .image-container {
     flex: 1;
-    width: 300px;
-    width: 600px;
+    
+    width: 40%;
     display: flex;
     flex-direction: row;
     gap: 20px;
-    position: fixed;
-    right: 7.5%;
-    bottom: 25%;
+
     
 }
 
@@ -268,6 +266,8 @@ div {
 figure {
     margin: 0;
     text-align: center;
+    
+  
 }
 
 .about-image {
@@ -276,6 +276,9 @@ figure {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
+    position: relative;
+    right: 10%;
+    top: 1%;
 }
 
 #slider {
