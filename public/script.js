@@ -56,7 +56,7 @@ window.onload = function() {
 
 };
 
-// this is function to save profile to localstorage (temporary)
+// this is function to save profile to localstorage
 
 function saveProfile() {
 
