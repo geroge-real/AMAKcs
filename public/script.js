@@ -29,32 +29,32 @@ menuButton.addEventListener('click', () => {
 
 
 
-// function to load saved profile data
-window.onload = function () {
+// Load profile data on both profile.html (edit page) and mainprofile.html (profile page)
+function loadProfile() {
     const username = localStorage.getItem('username') || "User";
     const email = localStorage.getItem('email') || "your.email@example.com";
     const books = JSON.parse(localStorage.getItem('favoriteBooks')) || ["Book 1", "Book 2", "Book 3"];
 
-    // apply values to edit profile page (profile.html)
+    // If on the Edit Profile Page (profile.html)
     if (document.getElementById('username')) {
         document.getElementById('username').value = username;
         document.getElementById('email').value = email;
-        
+
         const bookInputs = document.querySelectorAll('.book');
         books.forEach((book, index) => {
             if (bookInputs[index]) bookInputs[index].value = book;
         });
     }
 
-    // apply values to main profile page (mainprofile.html)
+    // If on the Main Profile Page (mainprofile.html)
     if (document.getElementById('displayName')) {
         document.getElementById('displayName').textContent = username;
         document.getElementById('displayBio').textContent = username;
         document.getElementById('displayUsername').textContent = username.toLowerCase().replace(/\s+/g, '');
     }
-};
+}
 
-// Function to save profile changes
+// Save profile changes to localStorage
 function saveProfile() {
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
@@ -71,4 +71,8 @@ function saveProfile() {
     // Redirect to main profile page to see the changes
     window.location.href = "mainprofile.html";  
 }
+
+// Run the function when the page loads
+window.onload = loadProfile;
+
 
