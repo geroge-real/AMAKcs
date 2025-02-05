@@ -29,51 +29,41 @@ menuButton.addEventListener('click', () => {
 
 
 
-//profile js to save
+// Function to load profile information
 window.onload = function() {
-
     const username = localStorage.getItem('username');
-
     const email = localStorage.getItem('email');
-
     const books = JSON.parse(localStorage.getItem('favoriteBooks'));
 
-    if (username) document.getElementById('username').value = username;
-
-    if (email) document.getElementById('email').value = email;
-
-    if (books) {
-
-        const bookInputs = document.querySelectorAll('.book');
-
-        books.forEach((book, index) => {
-
-            if (bookInputs[index]) bookInputs[index].value = book;
-
-        });
-
+    // If on the edit profile page
+    if (document.getElementById('username')) {
+        if (username) document.getElementById('username').value = username;
+        if (email) document.getElementById('email').value = email;
+        if (books) {
+            const bookInputs = document.querySelectorAll('.book');
+            books.forEach((book, index) => {
+                if (bookInputs[index]) bookInputs[index].value = book;
+            });
+        }
     }
 
+    // If on the main profile page
+    if (document.querySelector('.profile-info h2')) {
+        if (username) document.querySelector('.profile-info h2').textContent = `Welcome, ${username}!`;
+    }
 };
 
-// this is function to save profile to localstorage
-
+// Function to save profile changes
 function saveProfile() {
-
     const username = document.getElementById('username').value;
-
     const email = document.getElementById('email').value;
-
     const bookInputs = document.querySelectorAll('.book');
-
     const favoriteBooks = Array.from(bookInputs).map(input => input.value);
 
     localStorage.setItem('username', username);
-
     localStorage.setItem('email', email);
-
     localStorage.setItem('favoriteBooks', JSON.stringify(favoriteBooks));
 
     alert("Profile information saved successfully!");
-
 }
+
