@@ -29,27 +29,29 @@ menuButton.addEventListener('click', () => {
 
 
 
-// Function to load profile information
+// Function to load profile information on both pages
 window.onload = function() {
-    const username = localStorage.getItem('username');
-    const email = localStorage.getItem('email');
-    const books = JSON.parse(localStorage.getItem('favoriteBooks'));
+    const username = localStorage.getItem('username') || "Pisay Dela Cruz"; // Default value
+    const email = localStorage.getItem('email') || "atlmendoza@pshs.edu.ph";
+    const books = JSON.parse(localStorage.getItem('favoriteBooks')) || [];
 
-    // If on the edit profile page
+    // If on the edit profile page (profile.html)
     if (document.getElementById('username')) {
-        if (username) document.getElementById('username').value = username;
-        if (email) document.getElementById('email').value = email;
-        if (books) {
-            const bookInputs = document.querySelectorAll('.book');
-            books.forEach((book, index) => {
-                if (bookInputs[index]) bookInputs[index].value = book;
-            });
-        }
+        document.getElementById('username').value = username;
+        document.getElementById('email').value = email;
+
+        const bookInputs = document.querySelectorAll('.book');
+        books.forEach((book, index) => {
+            if (bookInputs[index]) bookInputs[index].value = book;
+        });
     }
 
-    // If on the main profile page
-    if (document.querySelector('.profile-info h2')) {
-        if (username) document.querySelector('.profile-info h2').textContent = `Welcome, ${username}!`;
+    // If on the main profile page (mainprofile.html)
+    if (document.getElementById('displayName')) {
+        document.getElementById('displayName').textContent = `Welcome, ${username}!`;
+    }
+    if (document.getElementById('displayUsername')) {
+        document.getElementById('displayUsername').textContent = username;
     }
 };
 
@@ -60,6 +62,7 @@ function saveProfile() {
     const bookInputs = document.querySelectorAll('.book');
     const favoriteBooks = Array.from(bookInputs).map(input => input.value);
 
+    // Save to localStorage
     localStorage.setItem('username', username);
     localStorage.setItem('email', email);
     localStorage.setItem('favoriteBooks', JSON.stringify(favoriteBooks));
