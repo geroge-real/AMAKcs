@@ -29,13 +29,13 @@ menuButton.addEventListener('click', () => {
 
 
 
-// Load profile data on both profile.html (edit page) and mainprofile.html (profile page)
+// load profile data on both profile.html (edit page) and mainprofile.html (profile page)
 function loadProfile() {
     const username = localStorage.getItem('username') || "User";
     const email = localStorage.getItem('email') || "your.email@example.com";
     const books = JSON.parse(localStorage.getItem('favoriteBooks')) || ["Book 1", "Book 2", "Book 3"];
 
-    // If on the Edit Profile Page (profile.html)
+    // if on the edit profile page (profile.html)
     if (document.getElementById('username')) {
         document.getElementById('username').value = username;
         document.getElementById('email').value = email;
@@ -46,7 +46,7 @@ function loadProfile() {
         });
     }
 
-    // If on the Main Profile Page (mainprofile.html)
+    // if on the main profile page (mainprofile.html)
     if (document.getElementById('displayName')) {
         document.getElementById('displayName').textContent = username;
         document.getElementById('displayBio').textContent = username;
@@ -68,11 +68,11 @@ function saveProfile() {
 
     alert("Profile information saved successfully!");
 
-    // Redirect to main profile page to see the changes
+    // redirect to main profile page to see the changes
     window.location.href = "mainprofile.html";  
 }
 
-// Run the function when the page loads
+// run the function when the page loads
 window.onload = loadProfile;
 
 
