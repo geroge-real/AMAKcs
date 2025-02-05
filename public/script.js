@@ -54,14 +54,14 @@ function loadProfile() {
     }
 }
 
-// Save profile changes to localStorage
+// save profile changes to localStorage
 function saveProfile() {
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
     const bookInputs = document.querySelectorAll('.book');
     const favoriteBooks = Array.from(bookInputs).map(input => input.value);
 
-    // Save data to localStorage
+    // save data to localStorage
     localStorage.setItem('username', username);
     localStorage.setItem('email', email);
     localStorage.setItem('favoriteBooks', JSON.stringify(favoriteBooks));
@@ -75,58 +75,59 @@ function saveProfile() {
 // run the function when the page loads
 window.onload = loadProfile;
 
-const API_URL = "https://teal-full-carnation.glitch.me";
+function loadPosts() {
+    const posts = JSON.parse(localStorage.getItem('posts')) || [];
+    const postContainer = document.getElementById('postContainer');
+    postContainer.innerHTML = '';
+
+    posts.forEach(post => {
+        const postElement = document.createElement('div');
+        postElement.classList.add('post-item');
+        postElement.innerHTML = `
+            <p><strong>${post.username}</strong></p>
+            <p>${post.text}</p>
+            ${post.media ? `<img src="${post.media}" class="post-media">` : ''}
+        `;
+        postContainer.prepend(postElement);
+    });
+}
 
 function submitPost() {
-    const postText = document.getElementById("postText").value;
-    const username = localStorage.getItem("username") || "Anonymous";
+    const text = document.getElementById('postText').value;
+    const mediaInput = document.getElementById('postMedia');
+    const username = localStorage.getItem('username') || "Anonymous";
+    let mediaData = "";
 
-    if (!postText.trim()) {
-        alert("Post cannot be empty!");
-        return;
+    if (mediaInput.files.length > 0) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            mediaData = e.target.result;
+            savePost(username, text, mediaData);
+        };
+        reader.readAsDataURL(mediaInput.files[0]);
+    } else {
+        savePost(username, text, mediaData);
     }
-
-    const postData = { username, content: postText };
-
-    fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(postData),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log("Post added:", data);
-        document.getElementById("postText").value = ""; // Clear the input
-        loadPosts(); // Refresh posts after submission
-    })
-    .catch(error => console.error("Error posting:", error));
 }
 
-function loadPosts() {
-    fetch(API_URL)
-    .then(response => response.json())
-    .then(posts => {
-        const postContainer = document.getElementById("postContainer");
-        postContainer.innerHTML = ""; // Clear previous posts
+function savePost(username, text, media) {
+    if (!text.trim() && !media) return;
 
-        posts.forEach(post => {
-            const postElement = document.createElement("div");
-            postElement.classList.add("post");
-            postElement.innerHTML = `
-                <strong>${post.username}</strong>: ${post.content} 
-                <small>(${new Date(post.timestamp).toLocaleString()})</small>
-            `;
-            postContainer.appendChild(postElement);
-        });
-    })
-    .catch(error => console.error("Error loading posts:", error));
+    const posts = JSON.parse(localStorage.getItem('posts')) || [];
+    posts.push({ username, text, media });
+    localStorage.setItem('posts', JSON.stringify(posts));
+
+    document.getElementById('postText').value = '';
+    document.getElementById('postMedia').value = '';
+    loadPosts();
 }
 
-// Load posts when the page opens
-window.onload = function() {
+// load posts when the page loads
+window.onload = function () {
     loadProfile();
     loadPosts();
 };
+
 
 
 
