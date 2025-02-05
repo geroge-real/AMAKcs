@@ -405,44 +405,7 @@ figcaption {
     color: #cccccc;
 }
 
-.profile-content {
-    max-width: 600px;
-    margin: 20px auto;
-    text-align: center;
-}
 
-#postText {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    resize: vertical;
-}
-
-#postMedia {
-    display: block;
-    margin: 10px auto;
-}
-
-.post-item {
-    background: white;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.post-item strong {
-    font-size: 1.2em;
-}
-
-.post-media {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
-    border-radius: 5px;
-}
 
 .social-links {
             list-style: none;
