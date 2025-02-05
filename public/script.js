@@ -78,48 +78,51 @@ window.onload = loadProfile;
 const API_URL = "https://teal-full-carnation.glitch.me";
 
 function submitPost() {
-    const content = document.getElementById("postText").value.trim();
+    const postText = document.getElementById("postText").value;
     const username = localStorage.getItem("username") || "Anonymous";
 
-    if (!content) {
+    if (!postText.trim()) {
         alert("Post cannot be empty!");
         return;
     }
 
-    fetch(`${API_URL}/posts`, {
+    const postData = { username, content: postText };
+
+    fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, content })
+        body: JSON.stringify(postData),
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById("postText").value = ""; // Clear input
-        loadPosts(); // Refresh posts
+        console.log("Post added:", data);
+        document.getElementById("postText").value = ""; // Clear the input
+        loadPosts(); // Refresh posts after submission
     })
     .catch(error => console.error("Error posting:", error));
 }
 
 function loadPosts() {
-    fetch(`${API_URL}/posts`)
+    fetch(API_URL)
     .then(response => response.json())
     .then(posts => {
-        const container = document.getElementById("postsContainer");
-        container.innerHTML = ""; // Clear previous posts
+        const postContainer = document.getElementById("postContainer");
+        postContainer.innerHTML = ""; // Clear previous posts
+
         posts.forEach(post => {
             const postElement = document.createElement("div");
+            postElement.classList.add("post");
             postElement.innerHTML = `
-                <div class="post">
-                    <strong>${post.username}</strong>: ${post.content} <br>
-                    <small>${new Date(post.timestamp).toLocaleString()}</small>
-                </div>
+                <strong>${post.username}</strong>: ${post.content} 
+                <small>(${new Date(post.timestamp).toLocaleString()})</small>
             `;
-            container.appendChild(postElement);
+            postContainer.appendChild(postElement);
         });
     })
     .catch(error => console.error("Error loading posts:", error));
 }
 
-// Load posts when the page loads
+// Load posts when the page opens
 window.onload = function() {
     loadProfile();
     loadPosts();
