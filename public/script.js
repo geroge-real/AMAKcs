@@ -21,7 +21,7 @@ function searchBooks() {
 const menuButton = document.querySelector('.menu-button');
 const menuContent = document.querySelector('.menu-content');
 
-// Add a click event listener to toggle the 'show' class
+// add a click event listener to toggle the 'show' class
 menuButton.addEventListener('click', () => {
   menuContent.classList.toggle('show');
 });
@@ -29,30 +29,46 @@ menuButton.addEventListener('click', () => {
 
 
 
-//profile js to save
-window.onload = function() {
-    const username = localStorage.getItem('username');
-    const email = localStorage.getItem('email');
-    const books = JSON.parse(localStorage.getItem('favoriteBooks'));
-    if (username) document.getElementById('username').value = username;
-    if (email) document.getElementById('email').value = email;
-    if (books) {
+// function to load saved profile data
+window.onload = function () {
+    const username = localStorage.getItem('username') || "User";
+    const email = localStorage.getItem('email') || "your.email@example.com";
+    const books = JSON.parse(localStorage.getItem('favoriteBooks')) || ["Book 1", "Book 2", "Book 3"];
+
+    // apply values to edit profile page (profile.html)
+    if (document.getElementById('username')) {
+        document.getElementById('username').value = username;
+        document.getElementById('email').value = email;
+        
         const bookInputs = document.querySelectorAll('.book');
         books.forEach((book, index) => {
             if (bookInputs[index]) bookInputs[index].value = book;
         });
     }
+
+    // apply values to main profile page (mainprofile.html)
+    if (document.getElementById('displayName')) {
+        document.getElementById('displayName').textContent = username;
+        document.getElementById('displayBio').textContent = username;
+        document.getElementById('displayUsername').textContent = username.toLowerCase().replace(/\s+/g, '');
+    }
 };
 
-// this is function to save profile to localstorage
-
+// Function to save profile changes
 function saveProfile() {
     const username = document.getElementById('username').value;
     const email = document.getElementById('email').value;
     const bookInputs = document.querySelectorAll('.book');
     const favoriteBooks = Array.from(bookInputs).map(input => input.value);
+
+    // Save data to localStorage
     localStorage.setItem('username', username);
     localStorage.setItem('email', email);
     localStorage.setItem('favoriteBooks', JSON.stringify(favoriteBooks));
+
     alert("Profile information saved successfully!");
+
+    // Redirect to main profile page to see the changes
+    window.location.href = "mainprofile.html";  
 }
+
