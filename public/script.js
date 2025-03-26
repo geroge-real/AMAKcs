@@ -74,4 +74,25 @@ function saveProfile() {
 
 // run the function when the page loads
 window.onload = loadProfile;
+// script.js
+document.addEventListener("DOMContentLoaded", () => {
+    const openLoginBtn = document.getElementById("open-login");
+    const overlay = document.getElementById("overlay");
+    const closeBtn = document.querySelector(".close-btn");
+
+    openLoginBtn.addEventListener("click", () => {
+        overlay.style.display = "flex";
+    });
+
+    closeBtn.addEventListener("click", () => {
+        overlay.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+        if (event.target === overlay) {
+            overlay.style.display = "none";
+        }
+    });
+});
+
 
