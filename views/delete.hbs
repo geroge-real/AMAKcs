@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delete Account</title>
+</head>
+<body>
+  <h1>Delete Account</h1>
+  {{#if message}}
+    <p style="color:red">{{message}}</p>
+  {{/if}}
+  <form action="/delete" method="POST">
+    <p>Are you sure you want to delete account "{{username}}"?</p>
+    <input type="hidden" name="username" value="{{username}}" />
+    <button type="submit">Yes, delete account</button>
+  </form>
+  <p><a href="/profile?username={{username}}">Back to Profile</a></p>
+</body>
+</html>

@@ -39,6 +39,15 @@ details like name, profile picture, and favorite books. <br/>
 **About Us**: JavaScript is used for the menu button in the about us page. The page displays information about 
 the website. Which include details about the website's purpose, the inspiration behind its creation, and the developers involved.
 
+4TH QUARTER UPDATES
+**Updates Done to include Persistent Data (Designing New Login and 
+Sign-Up Page, User Profile Management Page):** 
+We want to improve users' login and account creation and make signing up simple and hassle-free.
+Users joining from a foreign device can easily log in to their existing account by providing their username (or email address) and password.
+If any information is forgotten, users can click a hyperlink for a verification code to reset or recover it.
+If a user has yet to make an account, they can quickly sign up for AMAK by entering their email, first and last name, and password. 
 
-
-
+To improve account management features, users can click Edit Profile to change their account details and see the information publicly displayed.
+They can also save their changes by clicking the Save Changes button and updating their account in real-time.
+These changes are stored in the user's account and can be accessed by others.
+Users can also delete an account by clicking the Delete Account button, which leads to a confirmation prompt.
