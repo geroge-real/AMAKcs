@@ -1,0 +1,112 @@
+<html lang="en">
+  <head>
+    <!--meta tags-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - AMAK</title>
+    <meta
+      name="keywords"
+      content="AMAK, founder, background, history, goals, milestones, books, novels"
+    />
+    <meta name="author" content="Rey Adriano, George Froyalde" />
+    <meta
+      name="description"
+      content="The About Us Webpage, showing the website's goals,
+                                      mission and vision, the services we offer, significant
+                                      milestones, and history"
+    />
+    <link
+      rel="icon"
+      href="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/AKAM_Book_Logo-removebg-preview.png?v=1729391476844"
+      type="image/png"
+    />
+    <meta name="revised" content="December 11, 2024" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <!--header and menu-->
+    <header>
+      <div class="header-container">
+        <img
+          src="https://cdn.glitch.global/7a3accdb-5f0f-4e0c-89ff-f0c6f8c3e468/AKAM_Book_Logo-removebg-preview.png?v=1729391476844"
+          alt="AMAK Logo"
+          class="header-logo"
+        />
+      </div>
+      <h1>Account System</h1>
+      <div class="menu">
+        <button class="menu-button">
+          <img
+            src="https://cdn.glitch.global/2878296b-db4e-4203-9cd1-02fdadb8ad9f/269dd16fa1f5ff51accd09e7e1602267.png?v=1734959600345"
+            alt="Menu"
+            class="menu-icon"
+          />
+        </button>
+        <div class="menu-content">
+          <a href="index.html">Home</a>
+          <a href="aboutus.html">About Us</a>
+        </div>
+      </div>
+    </header>
+    <!-- content-->
+    <main>
+      <h1>Edit Account for {{account.username}}</h1>
+      {{#if message}}
+        <p style="color:red">{{message}}</p>
+      {{/if}}
+      <form action="/edit" method="POST">
+        <!-- Hidden original username -->
+        <input
+          type="hidden"
+          name="original_username"
+          value="{{account.username}}"
+        />
+        <label>New Username:</label><br />
+        <input
+          type="text"
+          name="username"
+          value="{{account.username}}"
+          required
+        /><br />
+        <label>New Password:</label><br />
+        <input
+          type="password"
+          name="password"
+          value="{{account.password}}"
+          required
+        /><br /><br />
+        <button type="submit">Update</button>
+      </form>
+
+      <p>
+
+        <div class="button-container">
+
+          <a
+            href="/profile?username={{account.username}}"
+            class="button home-button"
+          >Back to Profile</a>
+        </div>
+      </p>
+    </main>
+  </body>
+  <!--footer-->
+  <footer>
+    <p>&copy; 2024 AMAK. All rights reserved.</p>
+
+  </footer>
+  <style>
+    .button-container { display: flex; gap: 10px; margin-top: 50px;
+    justify-content: center; } .button { display: inline-block; padding: 10px
+    20px; background-color: #007bff; color: white; text-decoration: none;
+    border-radius: 5px; font-weight: bold; transition: background-color 0.3s
+    ease; } .button:hover { background-color: #0056b3; } .home-button {
+    background-color: #2a9d8f; /* teal green */ color: white; border-radius:
+    5px; padding: 10px 20px; text-decoration: none; font-weight: bold;
+    transition: background-color 0.3s ease; } .home-button:hover {
+    background-color: #21867a; /* slightly darker on hover */ }
+
+  </style>
+  <script src="script.js"></script>
+</html>

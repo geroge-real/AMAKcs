@@ -1,27 +1,170 @@
-// Step 3: Require/Loads the express module
-const express = require('express');
-// body-parser is used to read data payload from the http request body
-const bodyParser = require('body-parser'); 
-//  path is used to set default directories for MVC and also for the static files
-const path = require('path'); 
-// include the defined package
-
-
-// Step 4: Creates our express server
+const express = require("express");
+const fs = require("fs");
+const path = require("path");
+const session = require("express-session");
 const app = express();
+const port = process.env.PORT || 3000;
 
-//Serves static files inside the public folder
-app.use(express.static(path.join(__dirname, 'public')));
-app.set('view engine', 'hbs');
-app.use(bodyParser.urlencoded({ extended: true }));
+// middlewares to parse form data and JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-//Sets a basic route index.hbs when website initially starts and when home is clicked from the nav bar or whenever a process needs to go back to home 
-app.get('/', (req, res) => {
-    res.render('index.hbs');
-})
+// setup session management 
+app.use(
+  session({
+    secret: "veryveryverysecretpasswordfrfrnooneWillhAcKtHis127", 
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
+// setup view engine (HBS)
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "views"));
 
-// Step 5: Start HTTP Server on a port number 3000
-// This will create a web service for your own project
-const port = 3000;
-app.listen(port, () => console.log(`App listening to port ${port}`));
+// data file path
+const dataFile = path.join(__dirname, "accounts.json");
+
+// function: read accounts from JSON file
+function readAccounts() {
+  try {
+    if (!fs.existsSync(dataFile)) {
+      fs.writeFileSync(dataFile, JSON.stringify([]));
+    }
+    const data = fs.readFileSync(dataFile, "utf8");
+    return JSON.parse(data);
+  } catch (err) {
+    console.error("Error reading accounts:", err);
+    return [];
+  }
+}
+
+// function: write accounts to JSON file
+function writeAccounts(accounts) {
+    try {
+        fs.writeFileSync(dataFile, JSON.stringify(accounts, null, 2));
+        console.log("Accounts saved successfully:", accounts); // Debugging log
+    } catch (err) {
+        console.error("Error writing accounts:", err);
+    }
+}
+
+// middleware to protect routes that require loging in (yes security very cool)
+function requireLogin(req, res, next) {
+  if (!req.session.username) {
+    return res.redirect("/login");
+  }
+  next();
+}
+
+// route: Home page
+app.get("/", (req, res) => {
+  res.render("index");
+});
+
+// route: Registration form - GET
+app.get("/register", (req, res) => {
+  res.render("register", { message: null });
+});
+
+// route: Registration handling - POST
+app.post("/register", (req, res) => {
+  const { username, password } = req.body;
+  let accounts = readAccounts();
+  // check for duplicate username
+  if (accounts.find((acc) => acc.username === username)) {
+    res.render("register", { message: "Username already exists." });
+  } else {
+    accounts.push({ username, password });
+    writeAccounts(accounts);
+    res.redirect("/login");
+  }
+});
+
+// route: Login form - GET
+app.get("/login", (req, res) => {
+  res.render("login", { message: null });
+});
+
+// route: Login handling - POST
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+  let accounts = readAccounts();
+  const account = accounts.find(
+    (acc) => acc.username === username && acc.password === password
+  );
+  if (account) {
+    // store the username in the session
+    req.session.username = username;
+    res.redirect("/profile");
+  } else {
+    res.render("login", { message: "Invalid username or password" });
+  }
+});
+
+// route: Profile page - GET (Protected)
+app.get("/profile", requireLogin, (req, res) => {
+  let accounts = readAccounts();
+  // get the account info for the logged-in user only
+  const account = accounts.find((acc) => acc.username === req.session.username);
+  if (account) {
+    res.render("profile", { account });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+// Route: Edit account form - GET (Protected)
+app.get("/edit", requireLogin, (req, res) => {
+  let accounts = readAccounts();
+  const account = accounts.find((acc) => acc.username === req.session.username);
+  if (account) {
+    res.render("edit", { account, message: null });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+// Route: Edit account handling - POST (Protected)
+app.post("/edit", requireLogin, (req, res) => {
+  const { original_username, username, password } = req.body;
+  let accounts = readAccounts();
+  const index = accounts.findIndex((acc) => acc.username === original_username);
+  if (index !== -1) {
+    accounts[index] = { username, password };
+    writeAccounts(accounts);
+    // Update the session if the username changed
+    req.session.username = username;
+    res.redirect("/profile");
+  } else {
+    res.render("edit", { message: "Account not found." });
+  }
+});
+
+// Route: Delete account confirmation page - GET (Protected)
+app.get("/delete", requireLogin, (req, res) => {
+  res.render("delete", { username: req.session.username, message: null });
+});
+
+// Route: Delete account handling - POST (Protected)
+app.post("/delete", requireLogin, (req, res) => {
+  const { username } = req.body;
+  let accounts = readAccounts();
+  accounts = accounts.filter((acc) => acc.username !== username);
+  writeAccounts(accounts);
+  // Destroy session after deleting the account
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error destroying session:", err);
+    }
+    res.redirect("/");
+  });
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+});
+app.use(express.static(path.join(__dirname, "public")));
+const accounts = readAccounts();
+console.log("Current Accounts:", accounts);
