@@ -102,7 +102,7 @@ app.post("/login", (req, res) => {
   }
 });
 
-// route: Profile page - GET (Protected)
+// route: profile page - GET 
 app.get("/profile", requireLogin, (req, res) => {
   let accounts = readAccounts();
   // get the account info for the logged-in user only
@@ -114,7 +114,7 @@ app.get("/profile", requireLogin, (req, res) => {
   }
 });
 
-// Route: Edit account form - GET (Protected)
+// route: edit account form - GET 
 app.get("/edit", requireLogin, (req, res) => {
   let accounts = readAccounts();
   const account = accounts.find((acc) => acc.username === req.session.username);
@@ -125,7 +125,7 @@ app.get("/edit", requireLogin, (req, res) => {
   }
 });
 
-// Route: Edit account handling - POST (Protected)
+// route: Edit account handling - POST 
 app.post("/edit", requireLogin, (req, res) => {
   const { original_username, username, password } = req.body;
   let accounts = readAccounts();
@@ -133,7 +133,7 @@ app.post("/edit", requireLogin, (req, res) => {
   if (index !== -1) {
     accounts[index] = { username, password };
     writeAccounts(accounts);
-    // Update the session if the username changed
+    // update the session if the username changed
     req.session.username = username;
     res.redirect("/profile");
   } else {
@@ -141,18 +141,18 @@ app.post("/edit", requireLogin, (req, res) => {
   }
 });
 
-// Route: Delete account confirmation page - GET (Protected)
+// route: Delete account confirmation page- GET 
 app.get("/delete", requireLogin, (req, res) => {
   res.render("delete", { username: req.session.username, message: null });
 });
 
-// Route: Delete account handling - POST (Protected)
+// route: delete account handling -POST
 app.post("/delete", requireLogin, (req, res) => {
   const { username } = req.body;
   let accounts = readAccounts();
   accounts = accounts.filter((acc) => acc.username !== username);
   writeAccounts(accounts);
-  // Destroy session after deleting the account
+  // destroy session after deleting the account
   req.session.destroy((err) => {
     if (err) {
       console.error("Error destroying session:", err);
@@ -161,10 +161,12 @@ app.post("/delete", requireLogin, (req, res) => {
   });
 });
 
-// Start the server
+// start the server
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
+
 app.use(express.static(path.join(__dirname, "public")));
+
 const accounts = readAccounts();
 console.log("Current Accounts:", accounts);
